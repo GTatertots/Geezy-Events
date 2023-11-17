@@ -4,11 +4,18 @@ let db = new sqlite3.Database('./db/events.db');
 db.close();
 
 addEvent: function (event) {
-  
+
 }
 
 getEvents: function () {
-
+  db.all('SELECT * FROM events', [], (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    rows.forEach((row) => {
+      console.log(row.name);
+    });
+  });
 }
 
 getSingleEvent: function (event) {

@@ -1,3 +1,7 @@
+'''TODO:
+    Fix the date format
+    Fix the time format'''
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
