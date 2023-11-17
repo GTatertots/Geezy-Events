@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=API_KEY_GOES&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Geezy-Events</title>
 </head>
@@ -20,9 +22,13 @@
           </nav>
         </div>
       </header>
-      
+
+
       <div class="background-container">
-        <h1>MAP GOES HERE</h1>
+      	<gmp-map center="37.100730895996094,-113.59342193603516" zoom="14" map-id="DEMO_MAP_ID">
+          <gmp-advanced-marker position="37.100730895996094,-113.59342193603516" title="Vasion">
+          </gmp-advanced-marker>
+      	</gmp-map>
       </div>
 
       <div class="log">
