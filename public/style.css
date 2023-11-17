@@ -1,4 +1,4 @@
-ody {
+body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
@@ -61,9 +61,13 @@ ody {
 
 h2{
     background-color: gray;
+    padding: 18px;
 }
 
 /* .logbox{
     width: auto;
     background-color: white;
 } */
+
+
+  
