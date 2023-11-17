@@ -53,20 +53,67 @@ body {
 }
 
 .log{
-    background-color: white;
+    background-color: grey;
     width: auto;
-    height: 400px;
     margin: 24px;
 }
 
 h2{
     background-color: gray;
     padding: 18px;
+    margin: 0px;
 }
 
 gmp-map {
   height: 100%;
 }
+
+table{
+    width: 100%;
+    border-color: blue;
+    border-left: black;
+}
+
+.list-heading{
+    background-color: lightgray;
+}
+
+.list-item{
+    background-color: aliceblue;
+}
+
+.list-heading-main{
+    float: left;
+    padding: .5em;
+    font-weight: bold;
+}
+
+.list-heading-alt{
+    float: right;
+    padding: .5em;
+    font-weight: bold;
+}
+
+.list-time{
+    float: left;
+    padding: .5em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.list-symbol{
+    float: left;
+    padding: .5em 0em .5em 1em;
+}
+
+.list-event-title{
+    float: left;
+    padding: .5em .5em .5em .5em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+
 
 
 /* .logbox{
