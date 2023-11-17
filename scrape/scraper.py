@@ -34,7 +34,7 @@ def StGeorgeWebsite():
         model_body = driver.find_elements(by=By.CLASS_NAME, value="modal-body")
         print(len(model_body))
         for elm in model_body:
-            temp = elm.find_elements(by.CLASS_NAME, value="viewLocation")
+            temp = elm.find_elements(by=By.ID, value="viewLocation")
             print(len(temp))
             print("\n\n\n")
             print(elm.tag_name)
