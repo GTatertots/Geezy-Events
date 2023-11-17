@@ -4,7 +4,7 @@ import string
 
 def getLatitudeLongitude(location, username):
     geolocator = Nominatim(user_agent=username)
-    location = geolocator.geocode(location)
+    location = geolocator.geocode(location, timeout=20)
 
     if location:
         latitude = location.latitude
@@ -19,8 +19,9 @@ def randomString(length):
     random_string = ''.join(secrets.choice(characters) for _ in range(length))
     return random_string
 
-#Example usage:
-location = "2306 E 3860 S, Saint George, Utah"
+#location = "2306 E 3860 S, Saint George, UT"
+location = "200 N 200 E, St. George, UT"
+#location = "New York City, USA"
 user = randomString(30)
 latitude, longitude = getLatitudeLongitude(location, user)
 if latitude is not None and longitude is not None:
