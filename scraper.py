@@ -14,7 +14,7 @@ driver = webdriver.Chrome()
 
 TEST = False
 
-WEEKS_TO_SCRAPE = 3
+WEEKS_TO_SCRAPE = 10
 
 
 def main():
@@ -69,8 +69,10 @@ def StGeorgeWebsite(Events):
             time_element = event.find_element(by=By.CLASS_NAME, value="fc-list-item-time")
             time_text = time_element.text.strip()
             event_start_time = time_text.split("-")[0].strip()
+            event_start_time = CleanUpEventTime(event_start_time)
             print(event_start_time)
             event_end_time = time_text.split("-")[1].strip()
+            event_end_time = CleanUpEventTime(event_end_time)
             print(event_end_time)
             clickable_title = event.find_element(by=By.CLASS_NAME, value="fc-list-item-title").find_element(by=By.TAG_NAME, value="a")
             event_title = clickable_title.text.strip()
@@ -85,6 +87,7 @@ def StGeorgeWebsite(Events):
             event_date_data = model_body.find_element(by=By.ID, value="viewDate").text.strip()
             event_date = event_date_data.split(" ")[1:4]
             event_date = " ".join(event_date)
+            event_date = CleanUpEventDate(event_date)
             print(event_date)
             event_description = model_body.find_element(by=By.ID, value="viewDescription").text.strip()
             print(event_description)
@@ -101,6 +104,58 @@ def StGeorgeWebsite(Events):
     print(i)
     time.sleep(10)
     return Events
+
+def CleanUpEventTime(event_time):
+    time_elements = event_time.split(" ")
+    time = time_elements[0]
+    time = time.lower()
+    if time[-2] == "a":
+        time = time[:-2]
+    elif time[-2] == "p":
+        time = time[:-2]
+        time = time.split(":")
+        time[0] = str(int(time[0]) + 12)
+        time = ":".join(time)
+    return time
+
+def CleanUpEventDate(event_date):
+    date_elements = event_date.split(" ")
+    month = date_elements[0]
+    month = month[:3]
+    month = MonthToNumber(month)
+    day = date_elements[1].strip(",")
+    year = date_elements[2]
+    return f"{year}-{month}-{day}"
+
+def MonthToNumber(month):
+    month = month.lower()
+    if month == "jan":
+        return "01"
+    elif month == "feb":
+        return "02"
+    elif month == "mar":
+        return "03"
+    elif month == "apr":
+        return "04"
+    elif month == "may":
+        return "05"
+    elif month == "jun":
+        return "06"
+    elif month == "jul":
+        return "07"
+    elif month == "aug":
+        return "08"
+    elif month == "sep":
+        return "09"
+    elif month == "oct":
+        return "10"
+    elif month == "nov":
+        return "11"
+    elif month == "dec":
+        return "12"
+    else:
+        return "00"
+
 
 def init_test():
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
