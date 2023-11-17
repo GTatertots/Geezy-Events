@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Geezy-Events</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+          <div class="logo">Geezy Events</div>
+          <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Create</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <div id="app">
+    <!-- everything in here is managed by Vue -->
+      <div v-show="showCreateEvent">
+        <button @click="backButton">Go Back</button>
+        <table>
+          <tr>
+            <th>
+              <input type="text" placeholder="Event Name" v-model="eventName">
+            </th>
+            <th>
+              <input type="text" placeholder="Event Location" v-model="eventLocation">
+            </th>
+          </tr>
+          <tr>
+	    <th>
+	      <input type="date" placeholder="Event Date" v-model="eventDate">
+	    </th>
+	    <th>
+	      <input type="time" placeholder="Event Time" v-model="eventTime">
+	    </th>
+	    <th>
+	      <input type="text" placeholder="Type of Event" v-model="eventType">
+	    </th>
+	  </tr>
+	    <th>
+	      <input type="text" placeholder="Description of Event" v-model="eventDesc">
+	    </th>
+	  </tr>
+	</table>
+	<button v-on:click="createEventButton">Create Event</button>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js"></script>
+</body>
+</html>
