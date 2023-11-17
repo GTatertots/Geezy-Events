@@ -1,1 +1,71 @@
-TODO
+ody {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: lightgray;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  nav a:hover {
+    color: #f39c12;
+  }
+  
+.background-container{
+     color: blue;
+     width: auto;
+     height: 600px;
+     background-color: gray;
+     margin: 24px;
+}
+
+.log{
+    background-color: white;
+    width: auto;
+    height: 400px;
+    margin-top: 24px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+h2{
+    background-color: gray;
+}
+
+/* .logbox{
+    width: auto;
+    background-color: white;
+} */
