@@ -1,16 +1,33 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+from pathlib import PurePath
+import sqlite3
+
+DB_FILE_NAME = PurePath("db", "events.db")
 
 driver = webdriver.Chrome()
 
 TEST = False
 
+WEEKS_TO_SCRAPE = 3
+
+
 def main():
     if TEST:
         init_test()
         return
-    print(StGeorgeWebsite())
+    Events = []
+    Events = StGeorgeWebsite(Events)
+    InsertEventsIntoDatabase(Events)
+    print()
+
+def InsertEventsIntoDatabase(Events):
+    con = sqlite3.connect(DB_FILE_NAME)
+    cur = con.cursor()
+    for event in Events:
+        cur.execute("INSERT INTO events (title, date, start_time, end_time, location, description) VALUES (?, ?, ?, ?, ?, ?)", (event["title"], event["date"], event["start_time"], event["end_time"], event["location"], event["description"]))
+    con.commit()
 
 def GenerateEventObject(event_title, event_date, event_start_time, event_end_time, event_location, event_description):
     event_object = {
@@ -18,16 +35,13 @@ def GenerateEventObject(event_title, event_date, event_start_time, event_end_tim
         "date": event_date,
         "start_time": event_start_time,
         "end_time": event_end_time,
-        "location": event_location
+        "location": event_location,
+        "description": event_description,
     }
-    if event_description != "":
-        event_object["description"] = event_description
     return event_object
 
-def StGeorgeWebsite():
-    WEEKS_TO_SCRAPE = 12
+def StGeorgeWebsite(Events):
     driver.get("https://www.sgcity.org/eventcalendar/")
-    Events = []
     week_button_container = driver.find_elements(by=By.CLASS_NAME, value="fc-button-group")
     for possible_container in week_button_container:
         if possible_container.text == "MONTH\nWEEK\nDAY":
