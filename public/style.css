@@ -13,6 +13,17 @@ body {
     align-items: center;
     padding: 20px 0;
   }
+
+  .container-create {
+    width: 70%;
+    background-color: #E4C170;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-color: black;
+  }
   
   header {
     background-color: #EFD13B;
@@ -144,5 +155,15 @@ h2{
     text-align: center;
 }
 
-
+.footer {
+    width: 100%;
+    background-color: darksalmon;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    height: 2.5em;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+  }
   

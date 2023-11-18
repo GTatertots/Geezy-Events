@@ -22,41 +22,35 @@
           </nav>
         </div>
     </header>
+    <h1 class="aboutus-title">Create Event</h1>
+    <div class="container-create">
+      
     <div id="app">
     <!-- everything in here is managed by Vue -->
-        <button @click="backButton">Go Back</button>
-        <table>
-          <tr>
-            <th>
-              <input type="text" placeholder="Event Title" v-model="eventTitle">
-            </th>
-            <th>
-              <input type="text" placeholder="Event Location" v-model="eventLocation">
-            </th>
-          </tr>
-          <tr>
-	    <th>
-	      <input type="date" placeholder="Event Date" v-model="eventDate">
-	    </th>
-	    <th>
-	      <input type="time" placeholder="Event Start Time" v-model="eventStartTime">
-	    </th>
-	    <th>
-              <input type="time" placeholder="Event End Time" v-model="eventEndTime">
-            </th>
-	    <th>
-	      <input type="text" placeholder="Type of Event" v-model="eventType">
-	    </th>
-	  </tr>
-	    <th>
-	      <input type="text" placeholder="Description of Event" v-model="eventDesc">
-	    </th>
-	  </tr>
-	</table>
-	<button v-on:click="createEventButton">Create Event</button>
-      </div>
-    </div>
+    
+    <table>
+            <tr>
+              <td class="list-heading-main"><input type="text" placeholder="Event Title" v-model="eventTitle"></td>
+              <td class="list-heading-main"><input type="text" placeholder="Event Location" v-model="eventLocation"></td>
+              <td class="list-heading-main"><input type="text" placeholder="Event Description" v-model="eventDesc"></td>
+              <td class="list-heading-main"><input type="text" placeholder="Event Type" v-model="eventType"></td>
+            </tr>
+
+
+            <tr>
+	            <td class="list-heading-main"><input type="date" placeholder="Event Date" v-model="eventDate"></td>	    
+	            <td class="list-heading-main"><input type="time" placeholder="Event Start Time" v-model="eventStartTime"></td>
+              <td class="list-heading-main"><input type="time" placeholder="Event End Time" v-model="eventEndTime"></td>
+	          </tr>
+            <td  class="list-heading-main"><button v-on:click="createEventButton">Create Event</button></td>
+	  </table>
+
+   </div>
+  </div>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="app.js"></script>
 </body>
+<footer class="footer">
+  <p>© 2022 Knights of the Math Table. All Rights Reserved.</p>
+</footer>
 </html>
