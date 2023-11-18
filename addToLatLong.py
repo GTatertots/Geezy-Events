@@ -20,12 +20,17 @@ def randomString(length):
     random_string = ''.join(secrets.choice(characters) for _ in range(length))
     return random_string
 
-#location = "2306 E 3860 S, Saint George, UT"
-location = "200 N 200 E, St. George, UT"
-#location = "New York City, USA"
-latitude, longitude = getLatitudeLongitude(location)
-if latitude is not None and longitude is not None:
-    print(f"Latitude: {latitude}, Longitude: {longitude}")
-else:
-    print("Location not found.")
 
+def main():
+    #location =  "2306 E 3860 S, Saint George, UT"
+    # location = "200 N 200 E, St. George, UT"
+    #location = "New York City, USA"
+    location = "881 Coyote Gulch Ct, Ivins, UT 84738"
+    latitude, longitude = getLatitudeLongitude(location)
+    if latitude is not None and longitude is not None:
+        print(f"Latitude: {latitude}, Longitude: {longitude}")
+    else:
+        print("Location not found.")
+
+if __name__ == "__main__":
+    main()
