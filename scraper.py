@@ -111,7 +111,16 @@ def GreaterZionWebsite(Events):
     time.sleep(1)
     events_web = driver.find_elements(by=By.CLASS_NAME, value="tribe-events-calendar-day__event")
     for event_web in events_web:
-        event_date = event_web.find_element(by=By.CLASS_NAME, value="tribe-event-date-start").text.strip()
+        event_date = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-datetime")
+        event_date = event_date.get_attribute("datetime")
+        print(event_date)
+        event_time = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-time").text.strip()
+        event_start_time = event_time.split(" ")
+        event_start_time = "".join(event_start_time)
+        event_start_time = CleanUpEventTime(event_start_time)
+        print(event_start_time)
+        event_end_time = event_start_time
+        
     # print(len(events_web))
     return Events
 
