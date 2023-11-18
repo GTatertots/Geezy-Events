@@ -1,12 +1,9 @@
-'''TODO:
-    Fix the date format
-    Fix the time format'''
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 from pathlib import PurePath
 import sqlite3
+impor
 
 DB_FILE_NAME = PurePath("db", "events.db")
 
