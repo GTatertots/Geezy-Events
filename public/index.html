@@ -23,11 +23,13 @@
         </div>
       </header>
 
-
-      <div class="background-container">
+      <div id="app">
+      <div class="background-container">	
       	<gmp-map center="37.100730895996094,-113.59342193603516" zoom="14" map-id="DEMO_MAP_ID">
           <gmp-advanced-marker position="37.100730895996094,-113.59342193603516" title="Vasion">
           </gmp-advanced-marker>
+	  <gmp-advanced-marker v-for="event in events" position="{{ event.latitude }}, {{ event.longitude }}" title="{{ event.name }}">
+	  </gmp-advanced-marker>
       	</gmp-map>
       </div>
 
@@ -41,10 +43,10 @@
                             <span class="list-heading-alt">November 12, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item">
-                        <td class="list-time">2:00pm - 4:00pm</td>
+                    <tr class="list-item" v-for="event in events" @click="expandEvent(event)">
+			<td class="list-time">{{ event.time }}</td>
                         <td class="list-symbol"><span class="event-dot" style="background-color: aqua"></span></td>
-                        <td class="list-event-title"><a>Code Camp</a></td>
+			<td class="list-event-title"><a> {{ event.name }}</a></td>
                     </tr> 
                     <tr class="list-heading">
                         <td colspan="3">
@@ -117,6 +119,8 @@
                 </tbody>
             </table>
       </div>
-
+      </div>
+      <script src="https://unpkg.com/vue@3"></script>
+      <script src="app.js"></script>
 </body>
 </html>

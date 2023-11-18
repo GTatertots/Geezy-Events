@@ -54,6 +54,11 @@ Vue.createApp({
         });
       });  
     },
+    expandEvent: function (event) {
+      this.getSingleEvent(event._id);
+      this.displayStandard = false;
+      this.displayExpandedEvent = true;
+    },
     gotoCreateEvent: function () {
       this.showStandard = false;
       this.showCreateEvent = true;

@@ -34,7 +34,8 @@ app.post('/events', function (req, res) {
     location = req.body.location,
     date = req.body.date,
     time = req.body.time,
-    type = req.body.type
+    type = req.body.type,
+    description = req.body.type
   });
   newEvent.then(() => {
     res.status(201).send("event added");
