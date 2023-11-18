@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 from pathlib import PurePath
 import sqlite3
-impor
+import addToLatLong
 
 DB_FILE_NAME = PurePath("db", "events.db")
 
@@ -107,11 +107,22 @@ def StGeorgeWebsite(Events):
     return Events
 
 def LatAndLong(location):
-    return (-1, -1)
+    location = CleanerEvent(location)
+    lat, long = addToLatLong.getLatitudeLongitude(location)
+    if lat is None and long is None:
+        lat = 0
+        long = 0
+    return lat, long
 
 def CleanerEvent(event_location):
     if ":" in event_location and not "kayenta" in event_location.lower():
         event_location = event_location.split(":")[1].strip()
+    elif "kayenta" in event_location.lower():
+        event_location = "881 Coyote Gulch Ct, Ivins, UT 84738"
+    if "st. george" in event_location.lower():
+        event_location = event_location.replace("st.", "Saint")
+    if "st george" in event_location.lower():
+        event_location = event_location.replace("st", "Saint")
     if not "ut" in event_location.lower() and not "utah" in event_location.lower():
         event_location += ", Saint George, UT"
     return event_location
