@@ -8,12 +8,15 @@ tempData = []
 addEvent: function addEvent(event) {
   // TODO
   return new Promise((resolve, reject) => {
-    // db.run('INSERT INTO events (name, location, date, time, type) VALUES (?, ?, ?, ?, ?)', [event.name, event.location, event.date, event.time, event.type], (err) => {
-    //   if (err) {
-    //     reject(err);
-    //   }
-    //   resolve();
-    // });
+    if (!event.name || !event.location || !event.date || !event.time || !event.type) {
+      reject(new Error('Missing information'));
+    }
+    db.run('INSERT INTO events (name, location, date, time, type, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)', [event.name, event.location, event.date, event.time, event.type, 400, 400], (err) => {
+      if (err) {
+        reject(err);
+      }
+      resolve();
+    });
     resolve();
   });
 }

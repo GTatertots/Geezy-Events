@@ -39,6 +39,8 @@ app.post('/events', function (req, res) {
   });
   newEvent.then(() => {
     res.status(201).send("event added");
+  }).catch((err) => {
+    res.status(400).send("Error: " + err);
   });
 });
 
