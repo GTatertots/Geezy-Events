@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: lightgray;
+    background-color: #FBFFFF;
   }
   
   .container {
@@ -15,8 +15,8 @@ body {
   }
   
   header {
-    background-color: #333;
-    color: #fff;
+    background-color: #EFD13B;
+    color: black;
   }
   
   .logo {
@@ -35,7 +35,7 @@ body {
   
   nav a {
     text-decoration: none;
-    color: #fff;
+    color: black;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
   }
@@ -53,15 +53,9 @@ body {
 }
 
 .log{
-    background-color: black;
+    background-color: #62320C;
     width: auto;
     margin: 24px;
-}
-
-h2{
-    background-color: gray;
-    padding: 18px;
-    margin: 0px;
 }
 
 gmp-map {
@@ -70,16 +64,14 @@ gmp-map {
 
 table{
     width: 100%;
-    border-color: blue;
-    border-left: black;
 }
 
 .list-heading{
-    background-color: lightgray;
+    background-color: #B7521E;
 }
 
 .list-item{
-    background-color: aliceblue;
+    background-color: #FBFFFF;
 }
 
 .list-heading-main{
@@ -119,15 +111,20 @@ table{
     border-radius: 5px;
 }
 
+.header{
+    background-color: #E4C170;
+}
+
+.header-item{
+    float: left;
+}
+
+h2{
+    padding-left: 1em;
+}
 
 
 
-
-
-/* .logbox{
-    width: auto;
-    background-color: white;
-} */
 
 
   

@@ -30,10 +30,10 @@ def InsertEventsIntoDatabase(Events):
     con = sqlite3.connect(DB_FILE_NAME)
     cur = con.cursor()
     for event in Events:
-        cur.execute("INSERT INTO events (title, date, start_time, end_time, location, description) VALUES (?, ?, ?, ?, ?, ?)", (event["title"], event["date"], event["start_time"], event["end_time"], event["location"], event["description"]))
+        cur.execute("INSERT INTO events (title, date, start_time, end_time, location, description, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (event["title"], event["date"], event["start_time"], event["end_time"], event["location"], event["description"], event["latitude"], event["longitude"]))
     con.commit()
 
-def GenerateEventObject(event_title, event_date, event_start_time, event_end_time, event_location, event_description):
+def GenerateEventObject(event_title, event_date, event_start_time, event_end_time, event_location, event_description, event_lat, event_long):
     event_object = {
         "title": event_title,
         "date": event_date,
@@ -41,6 +41,8 @@ def GenerateEventObject(event_title, event_date, event_start_time, event_end_tim
         "end_time": event_end_time,
         "location": event_location,
         "description": event_description,
+        "latitude": event_lat,
+        "longitude": event_long
     }
     return event_object
 
@@ -84,6 +86,8 @@ def StGeorgeWebsite(Events):
             model_body = model_container.find_element(by=By.CLASS_NAME, value="modal-body")
             event_location = model_body.find_element(by=By.ID, value="viewLocation").text.strip()
             print(event_location)
+            event_lat, event_long = LatAndLong(event_location)
+            print(event_lat, event_long)
             event_date_data = model_body.find_element(by=By.ID, value="viewDate").text.strip()
             event_date = event_date_data.split(" ")[1:4]
             event_date = " ".join(event_date)
@@ -91,7 +95,7 @@ def StGeorgeWebsite(Events):
             print(event_date)
             event_description = model_body.find_element(by=By.ID, value="viewDescription").text.strip()
             print(event_description)
-            Events.append(GenerateEventObject(event_title, event_date, event_start_time, event_end_time, event_location, event_description))
+            Events.append(GenerateEventObject(event_title, event_date, event_start_time, event_end_time, event_location, event_description, event_lat, event_long))
             exit_button = model_header.find_element(by=By.CLASS_NAME, value="close")
             exit_button.click()
             print("\n\n\n\n")
@@ -104,6 +108,16 @@ def StGeorgeWebsite(Events):
     print(i)
     time.sleep(10)
     return Events
+
+def LatAndLong(location):
+    return (-1, -1)
+
+def CleanerEvent(event_location):
+    if ":" in event_location and not "kayenta" in event_location.lower():
+        event_location = event_location.split(":")[1].strip()
+    if not "ut" in event_location.lower() and not "utah" in event_location.lower():
+        event_location += ", Saint George, UT"
+    return event_location
 
 def CleanUpEventTime(event_time):
     time_elements = event_time.split(" ")
