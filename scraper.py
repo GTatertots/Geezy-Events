@@ -9,16 +9,16 @@ DB_FILE_NAME = PurePath("db", "events.db")
 
 driver = webdriver.Chrome()
 
-TEST = False
+TEST = True
 
 WEEKS_TO_SCRAPE = 10
 
 
 def main():
-    if TEST:
-        init_test()
-        return
     Events = []
+    if TEST:
+        Events = GreaterZionWebsite(Events)
+        return
     Events = StGeorgeWebsite(Events)
     InsertEventsIntoDatabase(Events)
     print()
@@ -104,6 +104,15 @@ def StGeorgeWebsite(Events):
         time.sleep(1)
     print(i)
     time.sleep(10)
+    return Events
+
+def GreaterZionWebsite(Events):
+    driver.get("https://greaterzion.com/events/today/")
+    time.sleep(1)
+    events_web = driver.find_elements(by=By.CLASS_NAME, value="tribe-events-calendar-day__event")
+    for event_web in events_web:
+        event_date = event_web.find_element(by=By.CLASS_NAME, value="tribe-event-date-start").text.strip()
+    # print(len(events_web))
     return Events
 
 def LatAndLong(location):
