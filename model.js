@@ -5,7 +5,7 @@ db.close();
 
 tempData = []
 
-addEvent: function (event) {
+addEvent: function addEvent(event) {
   // TODO
   return new Promise((resolve, reject) => {
     // db.run('INSERT INTO events (name, location, date, time, type) VALUES (?, ?, ?, ?, ?)', [event.name, event.location, event.date, event.time, event.type], (err) => {
@@ -18,7 +18,7 @@ addEvent: function (event) {
   });
 }
 
-getEvents: function () {
+getEvents: function getEvents() {
   return new Promise((resolve, reject) => {
     db.all('SELECT * FROM events', [], (err, rows) => {
       if (err) {
@@ -29,7 +29,7 @@ getEvents: function () {
   });
 }
 
-getSingleEvent: function (event) {
+getSingleEvent: function getSingleEvent(event) {
   return new Promise((resolve, reject) => {
     db.all('SELECT * FROM events WHERE id = ?', [event], (err, rows) => {
       if (err) {
@@ -40,14 +40,14 @@ getSingleEvent: function (event) {
   });
 }
 
-replaceEvent: function (event) {
+replaceEvent: function replaceEvent(event) {
   // TODO
   return new Promise((resolve, reject) => {
     resolve();
   });
 }
 
-deleteEvent: function (event) {
+deleteEvent: function deleteEvent(event) {
   // TODO
   return new Promise((resolve, reject) => {
     resolve();
