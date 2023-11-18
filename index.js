@@ -1,8 +1,11 @@
 const express = require('express');
 const model = require('./model');
+const cors = require('cors');
 
 var app = express();
 const port = 8080;
+
+app.use(cors());
 
 app.get('/events', function (req, res) {
   model.getEvents().then((events) => {
