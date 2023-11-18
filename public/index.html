@@ -80,7 +80,7 @@
                         </td>
                     </tr>
 		    <template v-for="event in events">
-		    <tr class="list-item" @click="expandEvent(event)">
+		    <tr class="list-item" v-if="event.date == '2023-11-21'" @click="expandEvent(event)">
                         <td class="list-time">{{ event.start_time }}</td>
                         <td class="list-symbol"><span class="event-dot" "background-color: aqua"></span></td>
                         <td class="list-event-title"><a> {{ event.title }}</a></td>
