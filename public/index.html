@@ -28,7 +28,7 @@
       	<gmp-map center="37.100730895996094,-113.59342193603516" zoom="14" map-id="DEMO_MAP_ID">
           <gmp-advanced-marker position="37.100730895996094,-113.59342193603516" title="Vasion">
           </gmp-advanced-marker>
-	  <gmp-advanced-marker v-for="event in events" {{ let latitude = Number(event.latitude) }} {{ let longitude = Number(event.longitude) }} position="${latitude},${longitude}" title="{{ event.name }}">
+	  <gmp-advanced-marker v-for="event in events" {{ let latitude = parseFloat(event.latitude) }} {{ let longitude = parseFloat(event.longitude) }} position="${latitude},${longitude}" title="{{ event.name }}">
 	  </gmp-advanced-marker>
       	</gmp-map>
       </div>
