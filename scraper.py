@@ -9,17 +9,17 @@ DB_FILE_NAME = PurePath("db", "events.db")
 
 driver = webdriver.Chrome()
 
-TEST = True
+TEST = False
 
-WEEKS_TO_SCRAPE = 10
+WEEKS_TO_SCRAPE = 2
 
 
 def main():
     Events = []
     if TEST:
-        Events = GreaterZionWebsite(Events)
         return
     Events = StGeorgeWebsite(Events)
+    Events = GreaterZionWebsite(Events)
     InsertEventsIntoDatabase(Events)
     print()
 
@@ -109,17 +109,45 @@ def StGeorgeWebsite(Events):
 def GreaterZionWebsite(Events):
     driver.get("https://greaterzion.com/events/today/")
     time.sleep(1)
-    events_web = driver.find_elements(by=By.CLASS_NAME, value="tribe-events-calendar-day__event")
-    for event_web in events_web:
-        event_date = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-datetime")
-        event_date = event_date.get_attribute("datetime")
-        print(event_date)
-        event_time = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-time").text.strip()
-        event_start_time = event_time.split(" ")
-        event_start_time = "".join(event_start_time)
-        event_start_time = CleanUpEventTime(event_start_time)
-        print(event_start_time)
-        event_end_time = event_start_time
+    for i in range(WEEKS_TO_SCRAPE * 7):
+        events_web = driver.find_elements(by=By.CLASS_NAME, value="tribe-events-calendar-day__event")
+        if len(events_web) == 0:
+            next_button = driver.find_element(by=By.CLASS_NAME, value="tribe-common-c-btn-icon--caret-right")
+            next_button.click()
+            time.sleep(3)
+            continue
+        for event_web in events_web:
+            event_date = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-datetime")
+            event_date = event_date.get_attribute("datetime")
+            print(event_date)
+            event_time = event_web.find_element(by=By.CLASS_NAME, value="tribe-event-date-start").text.strip()
+            event_start_time = event_time.split(" ")
+            event_start_time = event_start_time[-2:]
+            event_start_time = "".join(event_start_time)
+            event_start_time = CleanUpEventTime(event_start_time)
+            print(event_start_time)
+            event_end_time = event_web.find_element(by=By.CLASS_NAME, value="tribe-event-time").text.strip()
+            event_end_time = event_end_time.replace(" ", "")
+            event_end_time = CleanUpEventTime(event_end_time)
+            print(event_end_time)
+            event_title = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-title-link").text.strip()
+            print(event_title)
+            event_venue = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-venue-title").text.strip()
+            event_address = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-venue-address").text.strip() + ", UT"
+            event_venue += " " + event_address
+            print(event_venue)
+            print(event_address)
+            event_lat, event_long = LatAndLong(event_address)
+            print(event_lat, event_long)
+            event_description = event_web.find_element(by=By.CLASS_NAME, value="tribe-events-calendar-day__event-description")
+            event_description = event_description.find_element(by=By.TAG_NAME, value="p").text.strip()
+            print(event_description)
+            Events.append(GenerateEventObject(event_title, event_date, event_start_time, event_end_time, event_venue, event_description, event_lat, event_long))
+        next_button = driver.find_element(by=By.CLASS_NAME, value="tribe-common-c-btn-icon--caret-right")
+        next_button.click()
+        time.sleep(3)
+
+
         
     # print(len(events_web))
     return Events
@@ -149,7 +177,7 @@ def CleanUpEventTime(event_time):
     time_elements = event_time.split(" ")
     time = time_elements[0]
     time = time.lower()
-    if time[-2] == "a":
+    if time[-2] == "a" or time[:2] == "12":
         time = time[:-2]
     elif time[-2] == "p":
         time = time[:-2]
