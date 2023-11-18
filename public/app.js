@@ -3,15 +3,17 @@ const SERVER_URL = "localhost:8080"
 Vue.createApp({
   data: function () {
     return {
-      events = [],
+      events: [],
       eventName: "",
       eventLocation: "",
       eventDate: "",
       eventTime: "",
       eventType: "",
       eventDesc: "",
+      expandedEvent: "",
       showStandard: true,
-      showCreateEvent: false
+      showCreateEvent: false,
+      showExpandedEvent: false
     };
   },
   methods: {
@@ -47,7 +49,7 @@ Vue.createApp({
       this.showStandard = true;
     },
     getEvents: function () {
-      fetch(SERVER_URL + path).then((response) => {
+      fetch(SERVER_URL + '/events').then((response) => {
         response.json().then((data) => {
           console.log("loaded events from the server:", data);
           this.events = data;
@@ -56,12 +58,19 @@ Vue.createApp({
     },
     expandEvent: function (event) {
       this.getSingleEvent(event._id);
-      this.displayStandard = false;
-      this.displayExpandedEvent = true;
+      this.showStandard = false;
+      this.showExpandedEvent = true;
     },
     gotoCreateEvent: function () {
       this.showStandard = false;
       this.showCreateEvent = true;
+    },
+    getSingleEvent: function (eventID) {
+      fetch(SERVER_URL + "/events/" + eventID).then((response) => {
+        response.json().then((data) => {
+          this.expandedEvent = data;
+        });
+      });
     }
 
   },
