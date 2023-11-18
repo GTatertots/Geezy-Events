@@ -45,17 +45,34 @@ body {
   }
   
 .background-container{
-     color: blue;
      width: auto;
      height: 600px;
-     background-color: gray;
+     background-color: #E4C170;
      margin: 24px;
 }
 
+.background-container-about{
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    align-content: center;
+    height: 80%;
+    background-color: #E4C170;
+    padding: 24px;
+    font-size: 20px;
+}
+
+.boys{
+    width: 50px;
+    height: 50px
+}
+
+
 .log{
     background-color: #62320C;
-    width: auto;
-    margin: 24px;
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
 }
 
 gmp-map {
@@ -123,8 +140,9 @@ h2{
     padding-left: 1em;
 }
 
-
-
+.aboutus-title{
+    text-align: center;
+}
 
 
   
