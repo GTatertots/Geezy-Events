@@ -30,12 +30,12 @@ app.delete('/events/:eventID', function (req, res) {
 
 app.post('/events', function (req, res) {
   const newEvent = model.addEvent({
-    name = req.body.name,
-    location = req.body.location,
-    date = req.body.date,
-    time = req.body.time,
-    type = req.body.type,
-    description = req.body.type
+    name: req.body.name,
+    location: req.body.location,
+    date: req.body.date,
+    time: req.body.time,
+    type: req.body.type,
+    description: req.body.desc
   });
   newEvent.then(() => {
     res.status(201).send("event added");
