@@ -53,77 +53,91 @@
                             <span class="list-heading-alt">November 19, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-19" @click="expandEvent(event)">
+		    <template v-for="event in events">
+                    <tr class="list-item" v-if="event.date == 2023-11-19" @click="expandEvent(event)">
 			<td class="list-time">{{ event.start_time }}</td>
 			<td class="list-symbol"><span class="event-dot" style="background-color: aqua"></span></td>
 			<td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr> 
+		    </template>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Monday</span>
                             <span class="list-heading-alt">November 20, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-20" @click="expandEvent(event)">
+		    <template v-for="event in events">
+                    <tr class="list-item" v-if="event.date == 2023-11-20" @click="expandEvent(event)">
                         <td class="list-time">{{ event.start_time }}</td>
                         <td class="list-symbol"><span class="event-dot" style="background-color: aqua"></span></td>
                         <td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr>
+		    </template>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Tuesday</span>
                             <span class="list-heading-alt">November 21, 2023</span>
                         </td>
                     </tr>
-		    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-21" @click="expandEvent(event)">
+		    <template v-for="event in events">
+		    <tr class="list-item" v-if="event.date == 2023-11-21" @click="expandEvent(event)">
                         <td class="list-time">{{ event.start_time }}</td>
                         <td class="list-symbol"><span class="event-dot" "background-color: aqua"></span></td>
                         <td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr>
+		    </template>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Wednesday</span>
                             <span class="list-heading-alt">November 22, 2023</span>
                         </td>
                     </tr>
-		    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-22" @click="expandEvent(event)">
+		    <template v-for="event in events">
+		    <tr class="list-item" v-if="event.date == 2023-11-22" @click="expandEvent(event)">
                         <td class="list-time">{{ event.start_time }}</td>
                         <td class="list-symbol"><span class="event-dot" style="background-color: aqua"></span></td>
                         <td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr>
+		    </template>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Thursday</span>
                             <span class="list-heading-alt">November 23, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-23" @click="expandEvent(event)">
+		    <template v-for="event in events">
+                    <tr class="list-item" v-if="event.date == 2023-11-23" @click="expandEvent(event)">
                         <td class="list-time">{{ event.start_time }}</td>
                         <td class="list-symbol"><span class="event-dot" style="background-color: aqua"></span></td>
                         <td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr>
+		    </template>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Friday</span>
                             <span class="list-heading-alt">November 24, 2023</span>
                         </td>
                     </tr>
-		    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-24" @click="expandEvent(event)">
+		    <template v-for="event in events">
+		    <tr class="list-item" v-if="event.date == 2023-11-24" @click="expandEvent(event)">
                         <td class="list-time">{{ event.start_time }}</td>
                         <td class="list-symbol"><span class="event-dot" style="background-color: aqua"></span></td>
                         <td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr>
+		    </template>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Saturday</span>
                             <span class="list-heading-alt">November 25, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-25" @click="expandEvent(event)">
+		    <template v-for="event in events">
+                    <tr class="list-item" v-if="event.date == 2023-11-25" @click="expandEvent(event)">
                         <td class="list-time">{{ event.start_time }}</td>
                         <td class="list-symbol"><span class="event-dot" style="background-color: aqua"></span></td>
                         <td class="list-event-title"><a> {{ event.title }}</a></td>
-                    </tr> 
+                    </tr>
+	            </template>
 
                 </tbody>
             </table>
