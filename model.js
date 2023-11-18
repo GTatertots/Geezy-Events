@@ -1,12 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
 
-let db = new sqlite3.Database('./db/events.db');
-db.close();
 
 tempData = []
 
 addEvent: function addEvent(event) {
   // TODO
+  let db = new sqlite3.Database('./db/events.db');
+
   return new Promise((resolve, reject) => {
     if (!event.name || !event.location || !event.date || !event.time || !event.type) {
       reject(new Error('Missing information'));
@@ -16,32 +16,36 @@ addEvent: function addEvent(event) {
         reject(err);
       }
       resolve();
+      db.close();
     });
-    resolve();
   });
 }
 
 getEvents: function getEvents() {
   console.log("made it to getEvents");
+  let db = new sqlite3.Database('./db/events.db');
   return new Promise((resolve, reject) => {
     db.all('SELECT * FROM events', [], (err, rows) => {
       if (err) {
-	console.log("error in getEvents");
+        console.log("error in getEvents");
         reject(err);
       }
       resolve(rows);
       console.log("getEvents resolved");
+      db.close();
     });
   });
 }
 
 getSingleEvent: function getSingleEvent(event) {
+  let db = new sqlite3.Database('./db/events.db');
   return new Promise((resolve, reject) => {
     db.all('SELECT * FROM events WHERE id = ?', [event], (err, rows) => {
       if (err) {
         reject(err);
       }
       resolve(rows);
+      db.close();
     });
   });
 }
