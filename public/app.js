@@ -4,10 +4,11 @@ Vue.createApp({
   data: function () {
     return {
       events: [],
-      eventName: "",
+      eventTitle: "",
       eventLocation: "",
       eventDate: "",
-      eventTime: "",
+      eventStartTime: "",
+      eventEndTime: "",
       eventType: "",
       eventDesc: "",
       expandedEvent: "",
@@ -18,10 +19,11 @@ Vue.createApp({
   },
   methods: {
     createEventButton: function() {
-      var data = "name=" + encodeURIComponent(this.eventName);
+      var data = "title=" + encodeURIComponent(this.eventTitle);
       data += "&location=" + encodeURIComponent(this.eventLocation);
       data += "&date=" + encodeURIComponent(this.eventDate);
-      data += "&time=" + encodeURIComponent(this.eventTime);
+      data += "&start_time=" + encodeURIComponent(this.eventStartTime);
+      data += "&end_time=" + encodeURIComponent(this.eventEndTime);
       data += "&type=" + encodeURIComponent(this.eventType);
       data += "&desc=" + encodeURIComponent(this.eventDesc);
 
@@ -34,11 +36,12 @@ Vue.createApp({
       }).then((response) => {
         if (response.status == 201) {
           this.getEvents();
-          console.log("Event created:", this.eventName);
-          this.eventName = "";
+          console.log("Event created:", this.eventTitle);
+          this.eventTitle = "";
           this.eventLocation = "";
           this.eventDate = "";
-          this.eventTime = "";
+          this.eventStartTime = "";
+	  this.eventEndTime = "";
           this.eventType = "";
 	  this.eventDesc = "";
           } else {

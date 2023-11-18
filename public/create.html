@@ -22,12 +22,11 @@
     </header>
     <div id="app">
     <!-- everything in here is managed by Vue -->
-      <div v-show="showCreateEvent">
         <button @click="backButton">Go Back</button>
         <table>
           <tr>
             <th>
-              <input type="text" placeholder="Event Name" v-model="eventName">
+              <input type="text" placeholder="Event Title" v-model="eventTitle">
             </th>
             <th>
               <input type="text" placeholder="Event Location" v-model="eventLocation">
@@ -38,8 +37,11 @@
 	      <input type="date" placeholder="Event Date" v-model="eventDate">
 	    </th>
 	    <th>
-	      <input type="time" placeholder="Event Time" v-model="eventTime">
+	      <input type="time" placeholder="Event Start Time" v-model="eventStartTime">
 	    </th>
+	    <th>
+              <input type="time" placeholder="Event End Time" v-model="eventEndTime">
+            </th>
 	    <th>
 	      <input type="text" placeholder="Type of Event" v-model="eventType">
 	    </th>

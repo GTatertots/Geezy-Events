@@ -11,7 +11,7 @@ addEvent: function addEvent(event) {
     if (!event.name || !event.location || !event.date || !event.time || !event.type) {
       reject(new Error('Missing information'));
     }
-    db.run('INSERT INTO events (name, location, date, time, type, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)', [event.name, event.location, event.date, event.time, event.type, 400, 400], (err) => {
+    db.run('INSERT INTO events (name, location, date, start_time, end_time, type, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [event.name, event.location, event.date, event.start_time, event.end_time, event.type, event.latitude, event.longitude], (err) => {
       if (err) {
         reject(err);
       }

@@ -34,12 +34,15 @@ app.delete('/events/:eventID', function (req, res) {
 
 app.post('/events', function (req, res) {
   const newEvent = model.addEvent({
-    name: req.body.name,
+    title: req.body.title,
     location: req.body.location,
     date: req.body.date,
-    time: req.body.time,
+    start_time: req.body.start_time,
+    end_time: req.body.end_time,
     type: req.body.type,
-    description: req.body.desc
+    description: req.body.desc,
+    latitude: 37,
+    longitude: -113
   });
   newEvent.then(() => {
     res.status(201).send("event added");
