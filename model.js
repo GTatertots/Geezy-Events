@@ -22,12 +22,15 @@ addEvent: function addEvent(event) {
 }
 
 getEvents: function getEvents() {
+  console.log("made it to getEvents");
   return new Promise((resolve, reject) => {
     db.all('SELECT * FROM events', [], (err, rows) => {
       if (err) {
+	console.log("error in getEvents");
         reject(err);
       }
       resolve(rows);
+      console.log("getEvents resolved");
     });
   });
 }

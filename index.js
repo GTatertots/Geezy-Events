@@ -8,6 +8,7 @@ const port = 8080;
 app.use(cors());
 
 app.get('/events', function (req, res) {
+  console.log("app.get called");
   model.getEvents().then((events) => {
     res.status(200).json(events);
   }).catch((err) => {
