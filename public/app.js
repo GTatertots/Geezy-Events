@@ -3,7 +3,7 @@ const SERVER_URL = "localhost:8080"
 Vue.createApp({
   data: function () {
     return {
-      events = [],
+      events: [],
       eventName: "",
       eventLocation: "",
       eventDate: "",
