@@ -6,6 +6,9 @@
     <script async src="https://maps.googleapis.com/maps/api/js?key=&callback=console.debug&libraries=maps,marker&v=beta">
     </script>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <title>Geezy-Events</title>
 </head>
 <body>
@@ -14,10 +17,9 @@
           <div class="logo">Geezy Events</div>
           <nav>
             <ul>
-              <li><a href="#">Home</a></li>
+              <li><a href="index.html">Home</a></li>
               <li><a href="create.html">Create</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="about.html">About</a></li>
             </ul>
           </nav>
         </div>
@@ -34,8 +36,11 @@
       </div>
 
       <div class="log">
-
-            <table>
+	    <div><span class="event-dot" style="{ background-color: red }"></span>Sports</div>
+	    <div><span class="event-dot" style="{ background-color: purple }"></span>Music</div>
+	    <div><span class="event-dot" style="{ background-color: yellow }"></span>Festival</div>
+            <div><span class="event-dot" style="{ background-color: aqua }"></span>Other</div>
+	    <table>
                 <tbody>
                     <tr class="header">
                         <td colspan="3">
@@ -45,81 +50,80 @@
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Sunday</span>
-                            <span class="list-heading-alt">November 12, 2023</span>
+                            <span class="list-heading-alt">November 19, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item" v-for="event in events" @click="expandEvent(event)">
+                    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-19" @click="expandEvent(event)">
 			<td class="list-time">{{ event.start_time }}</td>
-                        <td class="list-symbol"><span class="event-dot" style="background-color: aqua"></span></td>
+			<td class="list-symbol"><span class="event-dot" v-bind:style="{ background-color: event.type == null ? aqua }"></span></td>
 			<td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr> 
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Monday</span>
-                            <span class="list-heading-alt">November 13, 2023</span>
+                            <span class="list-heading-alt">November 20, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item">
-                        <td class="list-time">2:00pm - 4:00pm</td>
-                        <td class="list-symbol"><span class="event-dot" style="background-color: #EFD13B"></span></td>
-                        <td class="list-event-title"><a>Code Camp</a></td>
-                    </tr> 
+                    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-20" @click="expandEvent(event)">
+                        <td class="list-time">{{ event.start_time }}</td>
+                        <td class="list-symbol"><span class="event-dot" v-bind:style="{ background-color: event.type == null ? aqua }"></span></td>
+                        <td class="list-event-title"><a> {{ event.title }}</a></td>
+                    </tr>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Tuesday</span>
-                            <span class="list-heading-alt">November 14, 2023</span>
+                            <span class="list-heading-alt">November 21, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item">
-                        <td class="list-time">2:00pm - 4:00pm</td>
-                        <td class="list-symbol"><span class="event-dot" style="background-color: #EFD13B"></span></td>
-                        <td class="list-event-title"><a>Code Camp</a></td>
-                    </tr> 
+		    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-21" @click="expandEvent(event)">
+                        <td class="list-time">{{ event.start_time }}</td>
+                        <td class="list-symbol"><span class="event-dot" v-bind:style="{ background-color: event.type == null ? aqua }"></span></td>
+                        <td class="list-event-title"><a> {{ event.title }}</a></td>
+                    </tr>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Wednesday</span>
-                            <span class="list-heading-alt">November 15, 2023</span>
+                            <span class="list-heading-alt">November 22, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item">
-                        <td class="list-time">2:00pm - 4:00pm</td>
-                        <td class="list-symbol"><span class="event-dot" style="background-color: #EFD13B"></span></td>
-                        <td class="list-event-title"><a>Code Camp</a></td>
+		    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-22" @click="expandEvent(event)">
+                        <td class="list-time">{{ event.start_time }}</td>
+                        <td class="list-symbol"><span class="event-dot" v-bind:style="{ background-color: event.type == null ? aqua }"></span></td>
+                        <td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Thursday</span>
-                            <span class="list-heading-alt">November 16, 2023</span>
+                            <span class="list-heading-alt">November 23, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item">
-                        <td class="list-time">2:00pm - 4:00pm</td>
-                        <td class="list-symbol"><span class="event-dot" style="background-color: #EFD13B"></span></td>
-                        <td class="list-event-title"><a>Code Camp</a></td>
+                    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-23" @click="expandEvent(event)">
+                        <td class="list-time">{{ event.start_time }}</td>
+                        <td class="list-symbol"><span class="event-dot" v-bind:style="{ background-color: event.type == null ? aqua }"></span></td>
+                        <td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Friday</span>
-                            <span class="list-heading-alt">November 17, 2023</span>
+                            <span class="list-heading-alt">November 24, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item">
-                        <td class="list-time">2:00pm - 4:00pm</td>
-                        <td class="list-symbol"><span class="event-dot" style="background-color: #EFD13B"></span></td>
-                        <td class="list-event-title"><a>Code Camp</a></td>
+		    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-24" @click="expandEvent(event)">
+                        <td class="list-time">{{ event.start_time }}</td>
+                        <td class="list-symbol"><span class="event-dot" v-bind:style="{ background-color: event.type == null ? aqua }"></span></td>
+                        <td class="list-event-title"><a> {{ event.title }}</a></td>
                     </tr>
                     <tr class="list-heading">
                         <td colspan="3">
                             <span class="list-heading-main">Saturday</span>
-                            <span class="list-heading-alt">November 18, 2023</span>
+                            <span class="list-heading-alt">November 25, 2023</span>
                         </td>
                     </tr>
-                    <tr class="list-item">
-                        <td class="list-time">2:00pm - 4:00pm</td>
-                        <td class="list-symbol"><span class="event-dot" style="background-color: #EFD13B"></span></td>
-                        <td class="list-event-title"><a>Code Camp</a></td>
-                    </tr>
-                    
+                    <tr class="list-item" v-for="event in events" v-if="event.date == 2023-11-25" @click="expandEvent(event)">
+                        <td class="list-time">{{ event.start_time }}</td>
+                        <td class="list-symbol"><span class="event-dot" v-bind:style="{ background-color: event.type == null ? aqua }"></span></td>
+                        <td class="list-event-title"><a> {{ event.title }}</a></td>
+                    </tr> 
 
                 </tbody>
             </table>
